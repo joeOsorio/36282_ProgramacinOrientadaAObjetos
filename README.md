@@ -54,3 +54,20 @@ Proyectos académicos desarrollados durante el curso
 🧑‍🎓 Uso académico
 
 Este repositorio tiene fines exclusivamente educativos y sirve como apoyo para el estudio, la práctica y la evaluación de los contenidos de la materi
+
+Notas de Copilacion, asociacion y ejecucion.
+
+para copilar en vs code abre la tarminal, y ejecuta el siguiente comando
+javac nombreArchivo.java
+
+Copilacion de varios archivos.
+javac -d out -sourcepath src src/\*.java
+
+y posteriormente
+java nombredelArchivo
+
+Para varios archivos:
+java -cp bin observador.WeatherStation
+
+se codifica en el estandar ANSI C90
+-fdiagnostics-color=always -g -std=c90 -Wall -Werror -Wextra -std=c99 -Wpedantic -o
