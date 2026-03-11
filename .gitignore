@@ -11,6 +11,8 @@
 .mtj.tmp/
 
 # Package Files #
+
+*.exe
 *.jar
 *.war
 *.nar
