@@ -1,0 +1,141 @@
+❯ java -cp output  Principal
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 1
+
+--- Captura de Poliza de Auto ---
+Número de cuenta: 123456
+Marca: Toyota
+Modelo: CRV-4W
+Estado: Tijuana
+
+La poliza de auto:
+Cuanta #:       123456;  Auto:  Toyota CRV-4W;
+Estado: Tijuana esta en un estado sin culpa.
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 1
+
+--- Captura de Poliza de Auto ---
+Número de cuenta: 987654
+Marca: Ford
+Modelo: Munstan GT
+Estado: Jalisco
+
+La poliza de auto:
+Cuanta #:       987654;  Auto:  Ford Munstan GT;
+Estado: Jalisco no en un estado sin culpa.
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 2
+
+--- Tabla de Empleados ---
+Nombre          ID         Departamento    Puesto
+------------------------------------------------------------
+Joe osorio      1293271    Software        Desarrollador
+Alejandro Cruz  1298063
+                0
+------------------------------------------------------------
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 3
+
+--- Calculador de Días del Mes ---
+Ingrese el número del mes (1-12): 2
+Ingrese el año mayor a 0: 2008
+El mes 2 del año 2008 tiene: 29 días.
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 3
+
+--- Calculador de Días del Mes ---
+Ingrese el número del mes (1-12): 2
+Ingrese el año mayor a 0: 2009
+El mes 2 del año 2009 tiene: 28 días.
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 4
+
+--- Datos Personales de Empleado ---
+Nombre completo: Joe Osorio osorio
+Dirección: UABC, 22424 Tijuana, B.C.
+Teléfono: 6641234567
+--- Datos del Empleado ---
+Nombre: Joe Osorio osorio
+Dirección: UABC, 22424 Tijuana, B.C.
+Teléfono: 6641234567
+--------------------------
+
+
+ Practica 5
+
+        ------------Menú------------
+
+        1 -   Poliza de Seguro
+        2 -   Empleado Enfoque empresarial
+        3 -   Dias del mes
+        4 -   Empleado enfoque personal
+        5 -   Salir
+
+        Opción: 5
+        Saliendo...

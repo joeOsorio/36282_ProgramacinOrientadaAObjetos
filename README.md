@@ -61,7 +61,7 @@ para copilar en vs code abre la tarminal, y ejecuta el siguiente comando
 javac nombreArchivo.java
 
 Copilacion de varios archivos.
-javac -d out -sourcepath src src/\*.java
+javac -d output -sourcepath src src/\*.java
 
 y posteriormente
 java nombredelArchivo
@@ -71,3 +71,11 @@ java -cp bin observador.WeatherStation
 
 se codifica en el estandar ANSI C90
 -fdiagnostics-color=always -g -std=c90 -Wall -Werror -Wextra -std=c99 -Wpedantic -o
+
+
+comando para copilar
+javac -d output -sourcepath src src/\*.java
+
+comando para ejecutar.
+java -cp output  nombreDelArchivoPrincipal              // no colocar extension del archivo.
+
