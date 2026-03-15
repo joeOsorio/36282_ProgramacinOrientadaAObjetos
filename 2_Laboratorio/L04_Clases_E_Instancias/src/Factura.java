@@ -1,18 +1,27 @@
+/*-----------------------------------
+Practica 4: Creación de clases e instancias de objetos usando constructores.
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+Fecha: Marzo/2026
+-----------------------------------*/
+
 public class Factura {
+
+    // Atributos privados de la clase.
     private int id;
     private String descripcion;
     private int numPiezas;
     private double precio;
 
-    // constructor
-    Factura(int id, String descripcion, int numPiezas, double precio) {
+    // Constructor que inicializa las cuatro variables de instancia.
+    public Factura(int id, String descripcion, int numPiezas, double precio) {
         this.id = id;
         this.descripcion = descripcion;
         this.numPiezas = numPiezas;
         this.precio = precio;
     }
 
-    // Metodos getters
+    // Getters
     public int getId() {
         return id;
     }
@@ -29,7 +38,7 @@ public class Factura {
         return precio;
     }
 
-    // Metodo setters
+    // Setters
     public void setId(int id) {
         this.id = id;
     }
@@ -46,14 +55,18 @@ public class Factura {
         this.precio = precio;
     }
 
-    // Otros metodos
-
-    public String toString() {
-        return "\nId:\t" + id + "\nDescripcion:\t" + descripcion + "\nNumero Piezas:\t" + numPiezas + "\nPrecio:\t"
-                + precio + ".\n";
-    }
-
+    // Calcula y devuelve el monto total de la factura.
     public double obtenerMontoFactura() {
         return precio * numPiezas;
+    }
+
+    // Método toString para imprimir los datos de la factura.
+    public String toString() {
+        return "--- Datos de la Factura ---"
+                + "\nId:\t\t" + id
+                + "\nDescripción:\t" + descripcion
+                + "\nNúmero de piezas:\t" + numPiezas
+                + "\nPrecio unitario:\t$" + String.format("%.2f", precio)
+                + "\nMonto total:\t\t$" + String.format("%.2f", obtenerMontoFactura());
     }
 }

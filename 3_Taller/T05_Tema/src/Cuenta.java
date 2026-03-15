@@ -1,68 +1,92 @@
-
+/*-----------------------------------
+Practica: Taller 5 - Cuenta Bancaria
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+-----------------------------------*/
 public class Cuenta {
 
+    // -------------------------------------------------------
+    // Atributos privados (Encapsulamiento)
+    // -------------------------------------------------------
     private String nombreCompleto;
     private double saldo;
     private String fechaNacimiento;
     private String direccion;
 
+    // -------------------------------------------------------
+    // Constructor por defecto — saldo en 0, datos vacíos
+    // -------------------------------------------------------
     public Cuenta() {
-        saldo = 0;
+        this.nombreCompleto = "No capturado";
+        this.saldo = 0;
+        this.fechaNacimiento = "No capturado";
+        this.direccion = "No capturado";
     }
 
-    public Cuenta(String nombreCompleto, double saldo, String fechaNacimiento, String direccion) {
+    // -------------------------------------------------------
+    // Constructor sencillo — nombre, fecha y saldo inicial
+    // -------------------------------------------------------
+    public Cuenta(String nombreCompleto, String fechaNacimiento, double saldo) {
         this.nombreCompleto = nombreCompleto;
-        this.saldo = saldo;
         this.fechaNacimiento = fechaNacimiento;
+        this.saldo = saldo;
+        this.direccion = "No capturado";
+    }
+
+    // -------------------------------------------------------
+    // Constructor completo — todos los atributos
+    // -------------------------------------------------------
+    public Cuenta(String nombreCompleto, String fechaNacimiento, double saldo, String direccion) {
+        this.nombreCompleto = nombreCompleto;
+        this.fechaNacimiento = fechaNacimiento;
+        this.saldo = saldo;
         this.direccion = direccion;
     }
 
-    public Cuenta(String nombreCompleto, double saldo, String fechaNacimiento) {
-        this.nombreCompleto = nombreCompleto;
-        this.saldo = saldo;
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public void setNombreCompleto(String nombre1, String nombre2, String apellidoPaterno, String apellidoMaterno) {
+    // -------------------------------------------------------
+    // Setters
+    // -------------------------------------------------------
+    public void setNombreCompleto(String nombre1, String nombre2,
+            String apellidoPaterno, String apellidoMaterno) {
         nombreCompleto = "";
-        if (nombre1 != "") {
+
+        if (!nombre1.isEmpty()) {
             nombreCompleto += nombre1 + " ";
         } else {
             nombreCompleto += "No capturado ";
         }
-        if (nombre2 != "") {
+
+        if (!nombre2.isEmpty()) {
             nombreCompleto += nombre2 + " ";
         }
-        if (apellidoPaterno != "") {
-            nombreCompleto += apellidoPaterno + " ";
-        } else if (apellidoPaterno == "") {
-            nombreCompleto += "No capturado ";
-        }
-        if (apellidoMaterno != "") {
-            nombreCompleto += apellidoMaterno + ".";
-        } else if (apellidoMaterno == "") {
-            nombreCompleto += "No capturado ";
-        }
-    }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+        if (!apellidoPaterno.isEmpty()) {
+            nombreCompleto += apellidoPaterno + " ";
+        } else {
+            nombreCompleto += "No capturado ";
+        }
+
+        if (!apellidoMaterno.isEmpty()) {
+            nombreCompleto += apellidoMaterno;
+        } else {
+            nombreCompleto += "No capturado";
+        }
     }
 
     public void setDireccion(String calle, int numero, String colonia, int codigoPostal) {
         direccion = "";
-        if (calle != "") {
+        if (!calle.isEmpty()) {
             direccion += calle + ", ";
         } else {
             direccion += "No capturado, ";
         }
-
         if (numero != 0) {
             direccion += numero + ", ";
         } else {
             direccion += "No capturado, ";
         }
-        if (colonia != "") {
+        if (!colonia.isEmpty()) {
+
             direccion += colonia + ", ";
         } else {
             direccion += "No capturado, ";
@@ -74,68 +98,104 @@ public class Cuenta {
         }
     }
 
+    public void setFechaNacimiento(int dia, int mes, int anio) {
+        this.fechaNacimiento = dia + "/" + mes + "/" + anio;
+    }
+
+    // -------------------------------------------------------
+    // Getters
+    // -------------------------------------------------------
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
     public String getDireccion() {
         return direccion;
     }
 
-    public void setFechaNacimiento(int dia, int mes, int anio) {
-        fechaNacimiento = dia + "/" + mes + "/" + anio;
-    }
-
-    public String getFechaNacimiento(String fechaNacimiento) {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
-    }
-
-    public void depositar(double saldoD) {
-        System.out.printf("\nSaldo anterior:%.2f", saldo);
-        if (saldoD > 0) {
-            this.saldo += saldoD;
-            System.out.printf("\nDeposito Exitoso", saldo);
-            System.out.printf("\nSaldo nuevo:%.2f", saldo);
-        }
-    }
-
-    public void depositar(double saldoD, String concepto) {
-        if (saldoD > 0) {
-            System.out.printf("\nSaldo anterior:%.2f", saldo);
-            this.saldo += saldoD;
-            System.out.printf("\nDeposito Exitoso", saldo);
-            System.out.printf("\nSaldo nuevo:%.2f", saldo);
-            System.out.printf("\nConcepto:%s", concepto);
-        }
-
-    }
-
-    public void retirar(double saldoRetiro, String concepto) {
-        if (0 < saldoRetiro & saldoRetiro < saldo) {
-            System.out.printf("\nSaldo anterior:%.2f", saldo);
-            saldo -= saldoRetiro;
-            System.out.printf("\nDeposito Exitoso", saldo);
-            System.out.printf("\nSaldo nuevo:%.2f", saldo);
-            System.out.printf("\nConcepto:%s", concepto);
-        } else {
-            System.out.printf("Fondos insuficiente");
-        }
-    }
-
-    public void retirar(double saldoRetiro) {
-        if (0 < saldoRetiro & saldoRetiro < saldo) {
-            saldo -= saldoRetiro;
-        } else {
-            System.out.printf("Fondos insuficiente");
-        }
     }
 
     public double getSaldo() {
         return saldo;
     }
 
-    // Otros metodos
+    // -------------------------------------------------------
+    // depositar — sin concepto
+    // -------------------------------------------------------
+    public void depositar(double cantidad) {
+        if (cantidad <= 0) {
+            System.out.printf("\n\t\tError: No se permiten cantidades negativas o en cero.\n");
+            return;
+        }
+        System.out.printf("\n\t\tSaldo anterior:\t$%.2f\n", saldo);
+        saldo += cantidad;
+        System.out.printf("\t\tDeposito exitoso.\n");
+        System.out.printf("\t\tSaldo nuevo:\t$%.2f\n", saldo);
+    }
+
+    // -------------------------------------------------------
+    // depositar — con concepto
+    // -------------------------------------------------------
+    public void depositar(double cantidad, String concepto) {
+        if (cantidad <= 0) {
+            System.out.printf("\n\t\tError: No se permiten cantidades negativas o en cero.\n");
+            return;
+        }
+        System.out.printf("\n\t\tSaldo anterior:\t$%.2f\n", saldo);
+        saldo += cantidad;
+        System.out.printf("\t\tDeposito exitoso.\n");
+        System.out.printf("\t\tConcepto:\t%s\n", concepto);
+        System.out.printf("\t\tSaldo nuevo:\t$%.2f\n", saldo);
+    }
+
+    // -------------------------------------------------------
+    // retirar — sin concepto
+    // -------------------------------------------------------
+    public void retirar(double cantidad) {
+        if (cantidad <= 0) {
+            System.out.printf("\n\t\tError: No se permiten cantidades negativas o en cero.\n");
+            return;
+        }
+        if (cantidad > saldo) {
+            System.out.printf("\n\t\tFondos insuficientes. Saldo disponible: $%.2f\n", saldo);
+            return;
+        }
+        System.out.printf("\n\t\tSaldo anterior:\t$%.2f\n", saldo);
+        saldo -= cantidad;
+        System.out.printf("\t\tRetiro exitoso.\n");
+        System.out.printf("\t\tSaldo nuevo:\t$%.2f\n", saldo);
+    }
+
+    // -------------------------------------------------------
+    // retirar — con concepto
+    // -------------------------------------------------------
+    public void retirar(double cantidad, String concepto) {
+        if (cantidad <= 0) {
+            System.out.printf("\n\t\tError: No se permiten cantidades negativas o en cero.\n");
+            return;
+        }
+        if (cantidad > saldo) {
+            System.out.printf("\n\t\tFondos insuficientes. Saldo disponible: $%.2f\n", saldo);
+            return;
+        }
+        System.out.printf("\n\t\tSaldo anterior:\t$%.2f\n", saldo);
+        saldo -= cantidad;
+        System.out.printf("\t\tRetiro exitoso.\n");
+        System.out.printf("\t\tConcepto:\t%s\n", concepto);
+        System.out.printf("\t\tSaldo nuevo:\t$%.2f\n", saldo);
+    }
+
+    // -------------------------------------------------------
+    // getDetalles() — devuelve String con todos los datos
+    // -------------------------------------------------------
     public String getDetalles() {
-        return "\n\nInformacion de la cuenta" +
-                "\n\tNombre del titular:\t" + nombreCompleto +
-                "\n\tFecha de nacimiento:\t" + fechaNacimiento +
-                "\n\tDireccion:\t" + direccion +
-                "\n\tSaldo:\t" + saldo;
+        return "\n\t\t===== Información de la Cuenta =====" +
+                "\n\t\tNombre:\t\t" + nombreCompleto +
+                "\n\t\tFecha Nac.:\t" + fechaNacimiento +
+                "\n\t\tDirección:\t" + direccion +
+                "\n\t\tSaldo actual:\t$" + String.format("%.2f", saldo) +
+                "\n\t\t====================================";
     }
 }

@@ -1,10 +1,19 @@
+/*-----------------------------------
+Practica 4: Creación de clases e instancias de objetos usando constructores.
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+Fecha: Marzo/2026
+-----------------------------------*/
+
 public class Lavadora {
+
+    // Atributos privados de la clase.
     private String marca;
     private String modelo;
     private String numeroSerie;
     private int capacidad;
 
-    // Metodos setters
+    // Setters
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -17,7 +26,11 @@ public class Lavadora {
         this.numeroSerie = numeroSerie;
     }
 
-    // Metodos getters
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    // Getters
     public String getMarca() {
         return marca;
     }
@@ -34,10 +47,12 @@ public class Lavadora {
         return capacidad;
     }
 
-    // Otros metodos
-    public String toString() {
-        return "\nMarca:\t" + modelo + "\nModelo:\t" + modelo + "\nNumero de serie:\t" + numeroSerie + "\nCapacidad:\t"
-                + capacidad;
+    // Método para imprimir los datos de la lavadora.
+    public void imprimirDatos() {
+        System.out.println("--- Datos de la Lavadora ---");
+        System.out.println("Marca:\t\t" + marca);
+        System.out.println("Modelo:\t\t" + modelo);
+        System.out.println("Número de serie:\t" + numeroSerie);
+        System.out.println("Capacidad:\t" + capacidad + " kg");
     }
-
 }

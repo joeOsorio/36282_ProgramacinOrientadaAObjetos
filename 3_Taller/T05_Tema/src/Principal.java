@@ -1,8 +1,8 @@
 /*-----------------------------------
-Practica: 3 Inicialización de objetos precisando los atributos e invocación de métodos.
-Nombre: Joshua Osorio 
-Materia: Programación Orientad	a a Objetos
-Fecha: Febrero/25/2025 
+Practica: Taller 5 - Cuenta Bancaria
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+Fecha: Marzo del 2026
 -----------------------------------*/
 
 import java.util.Scanner;
@@ -12,175 +12,173 @@ public class Principal {
 
         Scanner input = new Scanner(System.in);
 
-        // Se declaran las variables tipo string en null para poder realizar
-        // operaciones.
-        String primerNombre = "", segundoNombre = "", apellidoPaterno = "", apellidoMaterno = "";
-        String calle = "", colonia = "";
-        String tempStr = "";
+        String primerNombre = "",
+                segundoNombre = "",
+                apellidoPaterno = "",
+                apellidoMaterno = "",
+                calle = "",
+                colonia = "",
+                tempStr = "";
 
-        int dia, mes, anio, numeroCasa = 0, codigoPostal = 0, monto, opcion;
-        Cuenta generico = new Cuenta();
+        int dia, mes, anio, numeroCasa = 0, codigoPostal = 0, opcion;
+        double monto;
 
-        // Inicio el siclo do while para estar mostrando siempre las opciones.
+        Cuenta cuenta = new Cuenta();
+
         do {
-            // Se despliega información para mostrar las opciones.
             System.out.flush();
-            System.out.printf("\n\n\tSistema para capturar información de una cuenta de baco\n");
-            System.out.println("\n\t------------Menú------------\n");
-            System.out.println("\t1 -   Modificar nombre");
-            System.out.println("\t2 -   Modificar apellido paterno");
-            System.out.println("\t3 -   Modificar apellido materno");
-            System.out.println("\t4 -   Modificar calle");
-            System.out.println("\t5 -   Modificar numero");
-            System.out.println("\t6 -   Modificar colonia");
-            System.out.println("\t7 -   Modificar codigo postal");
-            System.out.println("\t8 -   Modificar fecha de nacimiento");
-            System.out.println("\t9 -   Depositar");
-            System.out.println("\t10 -  Retirar");
-            System.out.println("\t11 -  Mostrar datos completos");
-            System.out.println("\t12 -   Salir\n");
-
-            // Se captura la opción que desea.
+            System.out.printf("\n\n\tSistema de Cuenta Bancaria\n");
+            System.out.println("\n\t------------ Menú ------------\n");
+            System.out.println("\t1  - Modificar nombre");
+            System.out.println("\t2  - Modificar apellido paterno");
+            System.out.println("\t3  - Modificar apellido materno");
+            System.out.println("\t4  - Modificar calle");
+            System.out.println("\t5  - Modificar número");
+            System.out.println("\t6  - Modificar colonia");
+            System.out.println("\t7  - Modificar código postal");
+            System.out.println("\t8  - Modificar fecha de nacimiento");
+            System.out.println("\t9  - Depositar");
+            System.out.println("\t10 - Retirar");
+            System.out.println("\t11 - Mostrar datos completos");
+            System.out.println("\t12 - Salir\n");
             System.out.printf("\tOpción:\t");
             opcion = input.nextInt();
-
-            // Evaluar la opción para ingresar a la opción deseada.
             input.nextLine();
+
             switch (opcion) {
                 case 1:
-                    System.out.println("\n\n\t\tModificar primer nombre\t");
-                    System.out.printf("\t\tAnterior:\t%s\n", generico.getNombreCompleto());
-                    System.out.printf("\t\tTienes 2 nombres?: S / N\n", generico.getNombreCompleto());
+                    System.out.println("\n\n\t\tModificar nombre");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getNombreCompleto());
+                    System.out.printf("\t\t¿Tienes 2 nombres? S / N:\t");
                     tempStr = input.nextLine();
                     if (tempStr.equalsIgnoreCase("S")) {
                         System.out.printf("\t\tIngrese el primer nombre:\t");
                         primerNombre = input.nextLine();
                         System.out.printf("\t\tIngrese el segundo nombre:\t");
                         segundoNombre = input.nextLine();
-                        generico.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
-                        System.out.printf("\t\tCambio a:\t%s", generico.getNombreCompleto());
+                        cuenta.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
+                        System.out.printf("\t\tCambió a:\t%s\n", cuenta.getNombreCompleto());
                     } else if (tempStr.equalsIgnoreCase("N")) {
-                        System.out.printf("\t\tIngrese nuevo nombre:\t");
+                        System.out.printf("\t\tIngrese su nombre:\t");
                         primerNombre = input.nextLine();
-                        generico.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
-                        System.out.printf("\t\tCambio a:\t%s", generico.getNombreCompleto());
+                        segundoNombre = "";
+                        cuenta.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
+                        System.out.printf("\t\tCambió a:\t%s\n", cuenta.getNombreCompleto());
                     } else {
-                        System.out.printf("\t\tOpcion no valida\t");
+                        System.out.printf("\t\tOpción no válida.\n");
                     }
                     break;
                 case 2:
-                    System.out.println("\n\n\t\tModificar apellido paterno\t");
-                    System.out.printf("\t\tAnterior:\t%s\n", generico.getNombreCompleto());
-                    System.out.printf("\t\tIngrese nuevo apellido paterno:\t");
+                    System.out.println("\n\n\t\tModificar apellido paterno");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getNombreCompleto());
+                    System.out.printf("\t\tNuevo apellido paterno:\t");
                     apellidoPaterno = input.nextLine();
-                    generico.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
-                    System.out.printf("\t\tCambio a:\t%s", generico.getNombreCompleto());
+                    cuenta.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
+                    System.out.printf("\t\tNombre completo cambió a:\t%s\n", cuenta.getNombreCompleto());
                     break;
                 case 3:
-                    System.out.println("\n\n\t\tModificar apellido materno\t");
-                    System.out.printf("\n\t\tAnterior:\t%s\n", generico.getNombreCompleto());
-                    System.out.printf("\t\tNuevo:\t");
+                    System.out.println("\n\n\t\tModificar apellido materno");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getNombreCompleto());
+                    System.out.printf("\t\tNuevo apellido materno:\t");
                     apellidoMaterno = input.nextLine();
-                    generico.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
-                    System.out.printf("\t\tCambio a:\t%s", apellidoMaterno);
-                    System.out.printf("\n\t\tNombre completo cambio a:\t%s", generico.getNombreCompleto());
+                    cuenta.setNombreCompleto(primerNombre, segundoNombre, apellidoPaterno, apellidoMaterno);
+                    System.out.printf("\t\tNombre completo cambió a:\t%s\n", cuenta.getNombreCompleto());
                     break;
                 case 4:
-                    System.out.println("\n\n\t\tModificar calle\t");
-                    System.out.printf("\n\t\tAnterior:\t%s\n", generico.getDireccion());
+                    System.out.println("\n\n\t\tModificar calle");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getDireccion());
                     System.out.printf("\t\tNueva calle:\t");
                     calle = input.nextLine();
-                    generico.setDireccion(calle, numeroCasa, colonia, codigoPostal);
-                    System.out.printf("\t\tCambio a:\t%s", calle);
-                    System.out.printf("\n\t\tDirección cambio a:\t%s", generico.getDireccion());
+                    cuenta.setDireccion(calle, numeroCasa, colonia, codigoPostal);
+                    System.out.printf("\t\tCambió a:\t%s\n", calle);
+                    System.out.printf("\t\tDirección cambió a:\t%s\n", cuenta.getDireccion());
                     break;
                 case 5:
-                    System.out.println("\n\n\t\tModificar numero\t");
-                    System.out.printf("\n\t\tAnterior:\t%s\n", generico.getDireccion());
-                    System.out.printf("\t\tNueva numero de casa:\t");
+                    System.out.println("\n\n\t\tModificar número");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getDireccion());
+                    System.out.printf("\t\tNuevo número de casa:\t");
                     numeroCasa = input.nextInt();
-                    generico.setDireccion(calle, numeroCasa, colonia, codigoPostal);
-                    System.out.printf("\t\tCambio a:\t%d", numeroCasa);
-                    System.out.printf("\n\t\tDireccion cambio a:\t%s", generico.getDireccion());
+                    input.nextLine();
+                    cuenta.setDireccion(calle, numeroCasa, colonia, codigoPostal);
+                    System.out.printf("\t\tCambió a:\t%d\n", numeroCasa);
+                    System.out.printf("\t\tDirección cambió a:\t%s\n", cuenta.getDireccion());
                     break;
                 case 6:
-                    System.out.println("\n\n\t\tModificar colonia\t");
-                    System.out.printf("\n\t\tAnterior:\t%s\n", generico.getDireccion());
+                    System.out.println("\n\n\t\tModificar colonia");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getDireccion());
                     System.out.printf("\t\tNueva colonia:\t");
                     colonia = input.nextLine();
-                    generico.setDireccion(calle, numeroCasa, colonia, codigoPostal);
-                    System.out.printf("\t\tCambio a:\t%s", colonia);
-                    System.out.printf("\n\t\tDirección cambio a:\t%s", generico.getDireccion());
+                    cuenta.setDireccion(calle, numeroCasa, colonia, codigoPostal);
+                    System.out.printf("\t\tCambió a:\t%s\n", colonia);
+                    System.out.printf("\t\tDirección cambió a:\t%s\n", cuenta.getDireccion());
                     break;
                 case 7:
-                    System.out.println("\n\n\t\tModificar codigo postal\t");
-                    System.out.printf("\n\t\tAnterior:\t%s\n", generico.getDireccion());
-                    System.out.printf("\t\tNuevo codigo postal:\t");
+                    System.out.println("\n\n\t\tModificar código postal");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getDireccion());
+                    System.out.printf("\t\tNuevo código postal:\t");
                     codigoPostal = input.nextInt();
-                    generico.setDireccion(calle, numeroCasa, colonia, codigoPostal);
-                    System.out.printf("\t\tCambio a:\t%d", codigoPostal);
-                    System.out.printf("\n\t\tDireccion cambio a:\t%s", generico.getDireccion());
+                    input.nextLine();
+                    cuenta.setDireccion(calle, numeroCasa, colonia, codigoPostal);
+                    System.out.printf("\t\tCambió a:\t%d\n", codigoPostal);
+                    System.out.printf("\t\tDirección cambió a:\t%s\n", cuenta.getDireccion());
                     break;
                 case 8:
-                    System.out.println("\n\n\t\tModificar fecha de nacimiento:\t");
-                    System.out.printf("\n\t\tAnterior:\t%s \n\t", generico.getFechaNacimiento(tempStr));
-                    System.out.printf("\tDia:\t");
+                    System.out.println("\n\n\t\tModificar fecha de nacimiento");
+                    System.out.printf("\t\tAnterior:\t%s\n", cuenta.getFechaNacimiento());
+                    System.out.printf("\t\tDía:\t");
                     dia = input.nextInt();
                     System.out.printf("\t\tMes:\t");
                     mes = input.nextInt();
                     System.out.printf("\t\tAño:\t");
                     anio = input.nextInt();
-                    generico.setFechaNacimiento(dia, mes, anio);
-                    System.out.printf("\t\tnueva:\t%s\n", generico.getFechaNacimiento(tempStr));
+                    input.nextLine();
+                    cuenta.setFechaNacimiento(dia, mes, anio);
+                    System.out.printf("\t\tCambió a:\t%s\n", cuenta.getFechaNacimiento());
                     break;
                 case 9:
-                    System.out.println("\n\n\t\t--------Depositar--------:\t");
-                    System.out.printf("\n\t\tSaldo anterior:\t%s \n\t", generico.getSaldo());
-                    System.out.printf("\tMonto a depositar:\t");
-                    monto = input.nextInt();
-                    System.out.printf("\t\tAgregar descripcion?: S / N\n", generico.getNombreCompleto());
+                    System.out.println("\n\n\t\t-------- Depositar --------");
+                    System.out.printf("\t\tMonto a depositar:\t$");
+                    monto = input.nextDouble();
+                    input.nextLine();
+                    System.out.printf("\t\t¿Agregar descripción? S / N:\t");
                     tempStr = input.nextLine();
                     if (tempStr.equalsIgnoreCase("S")) {
                         System.out.printf("\t\tIngrese descripción:\t");
                         tempStr = input.nextLine();
-                        System.out.printf("\t\tDescripcion agregada exitosamente:\t%s", tempStr);
-                        generico.depositar(monto, tempStr);
+                        cuenta.depositar(monto, tempStr);
                     } else {
-                        generico.depositar(monto);
+                        cuenta.depositar(monto);
                     }
-                    System.out.printf("\t\tEl saldo cambio a:\t%d", generico.getSaldo());
                     break;
                 case 10:
-                    System.out.println("\n\n\t\t--------Retirar--------:\t");
-                    System.out.printf("\n\t\tSaldo anterior:\t%s \n\t", generico.getSaldo());
-                    System.out.printf("\tMonto a retirar:\t");
-                    monto = input.nextInt();
-                    System.out.printf("\t\tAgregar descripcion?: S / N\n", generico.getNombreCompleto());
+                    System.out.println("\n\n\t\t-------- Retirar --------");
+                    System.out.printf("\n\n\t\tSaldo en cuenta %.2f\n", cuenta.getSaldo());
+                    System.out.printf("\t\tMonto a retirar:\t$");
+                    monto = input.nextDouble();
+                    input.nextLine();
+                    System.out.printf("\t\t¿Agregar descripción? S / N:\t");
                     tempStr = input.nextLine();
-                    // if (tempStr == "S" || tempStr == "s") {
                     if (tempStr.equalsIgnoreCase("S")) {
                         System.out.printf("\t\tIngrese descripción:\t");
                         tempStr = input.nextLine();
-                        System.out.printf("\t\tDescripcion agregada exitosamente:\t%s", tempStr);
-                        generico.depositar(monto, tempStr);
+                        cuenta.retirar(monto, tempStr);
                     } else {
-                        generico.depositar(monto);
+                        cuenta.retirar(monto);
                     }
-                    System.out.printf("\t\tEl saldo cambio a:\t%d", generico.getSaldo());
                     break;
                 case 11:
-                    System.out.printf("\t\tMostrar Información\t\n");
-                    System.out.printf("\t\t%s\n", generico.getDetalles());
+                    System.out.printf("%s\n", cuenta.getDetalles());
                     break;
                 case 12:
-                    // Opción para salir del menu muestra mensaje y finaliza programa.
-                    System.out.printf("\tSaliendo...\t");
+                    System.out.printf("\n\tSaliendo...\n");
                     break;
                 default:
-                    // Solo sale del siclo si se ingresa un 0.
-                    System.out.printf("\tOpción no válida, intente nuevamente.\t");
+                    System.out.printf("\n\tOpción no válida, intente nuevamente.\n");
                     break;
             }
+
         } while (opcion != 12);
+
+        input.close();
     }
 }

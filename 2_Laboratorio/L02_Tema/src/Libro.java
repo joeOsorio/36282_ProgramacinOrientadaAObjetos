@@ -1,77 +1,99 @@
+/*-----------------------------------
+Practica 2: Inicialización de objetos precisando los atributos e invocación de métodos.
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+Fecha: Febrero/2026
+-----------------------------------*/
+
 public class Libro {
-	// Atributos privados de la clase.
-	private String tituloLibro;
-	private int anioPublicacion;
-	private String editorial;
-	private String generos;
-	private int numPaginas;
-	private String autores;
 
-	// constructor de la clase.
-	public Libro(String tituloLibro, int anioPublicacion, String editorial, String generos, int numPaginas,
-			String autores) {
-		this.tituloLibro = tituloLibro;
-		this.anioPublicacion = anioPublicacion;
-		this.editorial = editorial;
-		this.generos = generos;
-		this.numPaginas = numPaginas;
-		this.autores = autores;
-	}
+    // Atributos privados de la clase.
+    private String titulo;
+    private int anioPublicacion;
+    private String editorial;
+    private String generos;
+    private int numPaginas;
+    private String autores;
 
-	// Metodos get para traer valores de la clase.
-	public String getTituloLibro() {
-		return tituloLibro;
-	}
+    // Constructor por defecto.
+    public Libro() {
+        this.titulo = "No capturado";
+        this.anioPublicacion = 0;
+        this.editorial = "No capturado";
+        this.generos = "No capturado";
+        this.numPaginas = 0;
+        this.autores = "No capturado";
+    }
 
-	public int getAnioPublicacion() {
-		return anioPublicacion;
-	}
+    // Constructor completo.
+    public Libro(String titulo, int anioPublicacion, String editorial,
+            String generos, int numPaginas, String autores) {
+        this.titulo = titulo;
+        this.anioPublicacion = anioPublicacion;
+        this.editorial = editorial;
+        this.generos = generos;
+        this.numPaginas = numPaginas;
+        this.autores = autores;
+    }
 
-	public String getEditorial() {
-		return editorial;
-	}
+    // Getters.
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public String getGeneros() {
-		return generos;
-	}
+    public int getAnioPublicacion() {
+        return anioPublicacion;
+    }
 
-	public int getNumPaginas() {
-		return numPaginas;
-	}
+    public String getEditorial() {
+        return editorial;
+    }
 
-	public String getAutores() {
-		return autores;
-	}
+    public String getGeneros() {
+        return generos;
+    }
 
-	// Metodos set de la case, se utilizan para declar los atributos.
-	public void setTituloLibro(String tituloLibro) {
-		this.tituloLibro = tituloLibro;
-	}
+    public int getNumPaginas() {
+        return numPaginas;
+    }
 
-	public void setAnioPublicacion(int anioPublicacion) {
-		this.anioPublicacion = anioPublicacion;
-	}
+    public String getAutores() {
+        return autores;
+    }
 
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
+    // Setters.
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public void setGeneros(String generos) {
-		this.generos = generos;
-	}
+    public void setAnioPublicacion(int anioPublicacion) {
+        this.anioPublicacion = anioPublicacion;
+    }
 
-	public void setNumPaginas(int numPaginas) {
-		this.numPaginas = numPaginas;
-	}
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
 
-	public void setAutores(String autores) {
-		this.autores = autores;
-	}
+    public void setGeneros(String generos) {
+        this.generos = generos;
+    }
 
-	// Metodo toString para imprimir los atributos de la clase.
-	public String toString() {
-		return "Titulo del libro: " + tituloLibro + "\nAño de publicación: " + anioPublicacion + "\nEditorial: "
-				+ editorial + "\nGéneros: " + generos + "\nNúmero de páginas: " + numPaginas + "\nAutores: "
-				+ autores;
-	}
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+    public void setAutores(String autores) {
+        this.autores = autores;
+    }
+
+    // Método para imprimir todos los atributos del libro.
+    public void imprimirInfo() {
+        System.out.println("--- Información del Libro ---");
+        System.out.println("Título:\t\t\t" + titulo);
+        System.out.println("Año de publicación:\t" + anioPublicacion);
+        System.out.println("Editorial:\t\t" + editorial);
+        System.out.println("Géneros:\t\t" + generos);
+        System.out.println("Número de páginas:\t" + numPaginas);
+        System.out.println("Autores:\t\t" + autores);
+    }
 }

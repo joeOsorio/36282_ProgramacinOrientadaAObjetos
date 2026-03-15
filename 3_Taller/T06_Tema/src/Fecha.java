@@ -1,8 +1,10 @@
-public class DiasDelMes {
+public class Fecha {
+
+    private int dia;
     private int mes;
     private int anio;
 
-    public DiasDelMes(int mes, int anio) {
+    public Fecha(int dia, int mes, int anio) {
         if (0 < anio) {
             this.anio = anio;
         } else {
@@ -13,22 +15,33 @@ public class DiasDelMes {
         } else {
             System.out.println("\n El mes tiene que ser mayor a 0 y menor a 12, favor de volver a capturar");
         }
+        if (0 < dia & dia <= getNumeroDias()) {
+            this.dia = dia;
+        }
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setDia(int dia) {
+        this.dia = dia;
     }
 
     public void setMes(int mes) {
         this.mes = mes;
     }
 
-    public int getAnio() {
-        return anio;
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+
+    public int getDia() {
+        return dia;
     }
 
     public int getMes() {
         return mes;
+    }
+
+    public int getAnio() {
+        return anio;
     }
 
     public int getNumeroDias() {
@@ -56,5 +69,9 @@ public class DiasDelMes {
         } else {
             return anio % 4 == 0;
         }
+    }
+
+    public String getFormato() {
+        return dia + "/" + mes + "/" + anio;
     }
 }

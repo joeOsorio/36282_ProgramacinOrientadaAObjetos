@@ -1,91 +1,65 @@
-import javax.print.attribute.SetOfIntegerSyntax;
+/*-----------------------------------
+Practica 4: Creación de clases e instancias de objetos usando constructores.
+Nombre: Joshua Osorio
+Materia: Programación Orientada a Objetos
+Fecha: Marzo/2026
+-----------------------------------*/
 
 public class Empleado {
-    private String nombre1;
-    private String nombre2;
-    private String apellido1;
-    private String apellido2;
-    private int salarioSemanal;
 
-    // Métodos getter para obtener los atributos del empleado
-    public String getNombre1() {
-        return nombre1;
+    // Atributos privados de la clase.
+    private String nombre;
+    private String apellidoPaterno;
+    private double salarioMensual;
+
+    // Constructor que inicializa las tres variables de instancia.
+    public Empleado(String nombre, String apellidoPaterno, double salarioMensual) {
+        this.nombre = nombre;
+        this.apellidoPaterno = apellidoPaterno;
+        this.salarioMensual = salarioMensual;
     }
 
-    public String getNombre2() {
-        return nombre2;
+    // Getters
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getApellido1() {
-        return apellido1;
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
     }
 
-    public String getApellido2() {
-        return apellido2;
+    public double getSalarioMensual() {
+        return salarioMensual;
     }
 
-    public int getSalarioSemal() {
-        return salarioSemanal;
+    // Setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    // Método para calcular el salario mensual basado en el salario semanal
-    public void getNombreCompleto() {
-        /*
-         * - Método para establecer el nombre completo del empleado.
-         * - Se concatena dinámicamente según los valores proporcionados.
-         */
-        if (nombre1 != null) {
-            this.nombreCompleto = nombre1 + " ";
-        }
-        if (nombre2 != null) {
-            this.nombreCompleto += nombre2 + " ";
-        }
-        if (apellido1 != null) {
-            this.nombreCompleto += apellido1 + " ";
-        }
-        if (apellido2 != null) {
-            this.nombreCompleto += apellido2;
-        }
-
-        // En caso de que no se ingrese ningún nombre ni apellido, se asigna "No
-        // capturado".
-        if (nombre1 == null && nombre2 == null && apellido1 == null && apellido2 == null) {
-            this.nombreCompleto = "No capturado";
-        }
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
     }
 
-    public int getSalarioMensual() {
-        return salarioSemanal * 4;
+    public void setSalarioMensual(double salarioMensual) {
+        this.salarioMensual = salarioMensual;
     }
 
-    // Métodos setter para modificar los atributos del empleado
-
-    public void setSalarioSemanal(int salarioSemanal) {
-        this.salarioSemanal = salarioSemanal;
+    // Calcula y devuelve el salario anual (12 meses).
+    public double calcularSalarioAnual() {
+        return salarioMensual * 12;
     }
 
-    public void getNombreCompleto() {
-        /*
-         * - Método para establecer el nombre completo del empleado.
-         * - Se concatena dinámicamente según los valores proporcionados.
-         */
-        if (nombre1 != null) {
-            this.nombreCompleto = nombre1 + " ";
-        }
-        if (nombre2 != null) {
-            this.nombreCompleto += nombre2 + " ";
-        }
-        if (apellido1 != null) {
-            this.nombreCompleto += apellido1 + " ";
-        }
-        if (apellido2 != null) {
-            this.nombreCompleto += apellido2;
-        }
+    // Aplica un aumento porcentual al salario mensual.
+    public void aplicarAumento(double porcentaje) {
+        // Importante mensionar que recibe el porcentaje 67 % y no 0.67
+        salarioMensual += salarioMensual * (porcentaje / 100);
+    }
 
-        // En caso de que no se ingrese ningún nombre ni apellido, se asigna "No
-        // capturado".
-        if (nombre1 == null && nombre2 == null && apellido1 == null && apellido2 == null) {
-            this.nombreCompleto = "No capturado";
-        }
+    // Método toString para imprimir los datos del empleado.
+    public String toString() {
+        return "Empleado: " + nombre + " " + apellidoPaterno
+                + "\nSalario mensual:\t$" + String.format("%.2f", salarioMensual)
+                + "\nSalario anual:\t\t$" + String.format("%.2f", calcularSalarioAnual());
     }
 }
